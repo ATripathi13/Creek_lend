@@ -120,7 +120,7 @@ export const bankLookup = async (req: Request, res: Response) => {
             "111222333": "WELLS FARGO",
         };
 
-        const bankName = mockBanks[routingNumber] || "FEDERAL RESERVE BANK";
+        const bankName = mockBanks[routingNumber as string] || "FEDERAL RESERVE BANK";
 
         res.json({ routingNumber, bankName });
     } catch (error) {

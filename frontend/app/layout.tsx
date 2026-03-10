@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
+import UTMTracker from "../src/components/UTMTracker";
+import { Suspense } from "react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -62,6 +64,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${outfit.variable} font-sans antialiased`}
       >
+        <Suspense fallback={null}>
+          <UTMTracker />
+        </Suspense>
         <div className="flex flex-col min-h-screen">
           {/* Navbar Placeholder */}
           <header className="sticky top-0 z-50 glass border-b">

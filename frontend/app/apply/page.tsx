@@ -115,12 +115,38 @@ export default function ApplyPage() {
 
     const onSubmit = async (data: any) => {
         setIsSubmitting(true);
-        // Simulate API call
-        console.log("Submitting application:", data);
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        setIsSubmitting(false);
-        setSubmitted(true);
-        localStorage.removeItem("creek_lend_draft");
+        try {
+            // Capture UTMs from sessionStorage
+            const utmSource = sessionStorage.getItem("utm_source");
+            const utmMedium = sessionStorage.getItem("utm_medium");
+            const utmCampaign = sessionStorage.getItem("utm_campaign");
+
+            const response = await fetch("http://localhost:8000/api/applications", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    ...data,
+                    utmSource,
+                    utmMedium,
+                    utmCampaign,
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to submit application");
+            }
+
+            const result = await response.json();
+            console.log("Submission successful:", result);
+
+            setSubmitted(true);
+            localStorage.removeItem("creek_lend_draft");
+        } catch (error) {
+            console.error("Error submitting application:", error);
+            alert("There was an error submitting your application. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     if (submitted) {
@@ -331,10 +357,20 @@ function StepBanking() {
     const routing = watch("routingNumber");
 
     useEffect(() => {
-        if (routing?.length === 9) {
-            // Simulate bank lookup proxy call
-            setValue("bankName", "CHASE BANK - SIMULATED");
-        }
+        const lookupBank = async () => {
+            if (routing?.length === 9) {
+                try {
+                    const response = await fetch(`http://localhost:8000/api/applications/bank-lookup/${routing}`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        setValue("bankName", data.bankName);
+                    }
+                } catch (error) {
+                    console.error("Bank lookup failed:", error);
+                }
+            }
+        };
+        lookupBank();
     }, [routing, setValue]);
 
     return (
