@@ -1,21 +1,23 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { PrismaClient } from '@prisma/client';
+import applicationRoutes from './routes/application';
 
 dotenv.config();
 
 const app = express();
-const prisma = new PrismaClient();
 const PORT = process.env.PORT || 8000;
 
 app.use(cors());
 app.use(express.json());
 
+// Main Routes
+app.use('/api/applications', applicationRoutes);
+
 app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'ok', message: 'Creek Lend API is running' });
+    res.status(200).json({ status: 'ok', message: 'Creek Lend API is running' });
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
