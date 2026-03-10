@@ -59,6 +59,7 @@ export const submitApplication = async (req: Request, res: Response) => {
                 encryptedDlNumber,
                 encryptedAccountNum,
                 dlState,
+                dob,
                 employerName,
                 monthlyIncome,
                 incomeFrequency,

@@ -13,7 +13,19 @@
   --color-primary-900: oklch(0.25 0.12 220);
   --color-primary-950: oklch(0.18 0.08 220);
 
-  --color-secondary-500: oklch(0.65 0.25 45); /* Gold/Amber accent */
+  --color-secondary-500: oklch(0.65 0.25 45);
+  /* Gold/Amber accent */
+
+  /* Mapping shadcn-like variables for @apply compatibility */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-destructive: var(--destructive);
+  --color-ring: var(--ring);
 }
 
 :root {
@@ -65,6 +77,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground transition-colors duration-300;
     font-feature-settings: "rlig" 1, "calt" 1;
