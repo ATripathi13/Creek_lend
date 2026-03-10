@@ -5,10 +5,73 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
+}
+
+model Borrower {
+  id              String        @id @default(uuid())
+  firstName       String
+  lastName        String
+  email           String        @unique
+  phone           String
+  dob             DateTime
+  applications    Application[]
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
+
+model Application {
+  id                   String      @id @default(uuid())
+  borrowerId           String
+  borrower             Borrower    @relation(fields: [borrowerId], references: [id])
+  
+  // Encrypted fields (Stored as AES-256 ciphertexts)
+  encryptedSsn         String
+  encryptedDlNumber    String
+  dlState              String
+  
+  // Employment
+  employmentStatus     String
+  employerName         String?
+  monthlyIncome        Decimal     @db.Decimal(10,2)
+  
+  // Banking
+  routingNumber        String
+  bankName             String?
+  encryptedAccountNum  String
+  
+  // Application Meta
+  status               String      @default("PENDING") // PENDING, APPROVED, REJECTED
+  
+  // Tracking & Attribution
+  utms                 UTMTracking?
+  consent              ConsentRecord?
+  
+  createdAt            DateTime    @default(now())
+}
+
+model UTMTracking {
+  id            String      @id @default(uuid())
+  applicationId String      @unique
+  application   Application @relation(fields: [applicationId], references: [id])
+  source        String?
+  medium        String?
+  campaign      String?
+  content       String?
+  term          String?
+}
+
+model ConsentRecord {
+  id                 String      @id @default(uuid())
+  applicationId      String      @unique
+  application        Application @relation(fields: [applicationId], references: [id])
+  ipAddress          String
+  userAgent          String
+  jornayaLeadId      String?
+  trustedFormCertUrl String?
+  tcpaAcceptedAt     DateTime    @default(now())
 }
