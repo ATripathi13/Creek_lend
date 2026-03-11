@@ -1,0 +1,18 @@
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe@test.com",
+    "phone": "5551234567",
+    "loanAmount": 5000,
+    "ssn": "123-45-6789",
+    "dob": "1995-05-15",
+    "dlState": "NY",
+    "dlNumber": "ABC123456",
+    "employerName": "Global Corp",
+    "monthlyIncome": 5000,
+    "incomeFrequency": "MONTHLY",
+    "routingNumber": "123456789",
+    "accountNumber": "9876543210",
+    "bankName": "JPMorgan Chase Bank",
+    "tcpaConsent": true
+}

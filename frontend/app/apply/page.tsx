@@ -113,19 +113,23 @@ export default function ApplyPage() {
         }
     };
 
-    const onSubmit = async (data: any) => {
+    const onSubmit = async () => {
         setIsSubmitting(true);
         try {
+            // Get all values from the form, not just the current step's data
+            const formData = methods.getValues();
+
             // Capture UTMs from sessionStorage
             const utmSource = sessionStorage.getItem("utm_source");
             const utmMedium = sessionStorage.getItem("utm_medium");
             const utmCampaign = sessionStorage.getItem("utm_campaign");
 
+
             const response = await fetch("http://localhost:8000/api/applications", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    ...data,
+                    ...formData,
                     utmSource,
                     utmMedium,
                     utmCampaign,

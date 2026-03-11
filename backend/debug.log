@@ -1,0 +1,256 @@
+
+[2026-03-11T16:36:20.032Z] Submission failed
+PrismaClientValidationError: 
+Invalid `prisma.borrower.findUnique()` invocation in
+D:\Creek lend\backend\src\controllers\application.ts:45:46
+
+  42 } = req.body;
+  43 
+  44 // 1. Create or find Borrower
+→ 45 let borrower = await prisma.borrower.findUnique({
+       where: {
+         email: undefined,
+     ?   id?: String,
+     ?   AND?: BorrowerWhereInput | BorrowerWhereInput[],
+     ?   OR?: BorrowerWhereInput[],
+     ?   NOT?: BorrowerWhereInput | BorrowerWhereInput[],
+     ?   firstName?: StringFilter | String,
+     ?   lastName?: StringFilter | String,
+     ?   phone?: StringFilter | String,
+     ?   createdAt?: DateTimeFilter | DateTime,
+     ?   updatedAt?: DateTimeFilter | DateTime,
+     ?   applications?: ApplicationListRelationFilter
+       }
+     })
+
+Argument `where` of type BorrowerWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.
+    at throwValidationException (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\core\errorRendering\throwValidationException.ts:46:9)
+    at zr.handleRequestError (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\RequestHandler.ts:211:7)
+    at zr.handleAndLogRequestError (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\RequestHandler.ts:183:12)
+    at zr.request (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\RequestHandler.ts:152:12)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async a (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:808:24)
+
+[2026-03-11T16:38:30.583Z] Submission failed
+PrismaClientValidationError: 
+Invalid `prisma.borrower.findUnique()` invocation in
+D:\Creek lend\backend\src\controllers\application.ts:45:46
+
+  42 } = req.body;
+  43 
+  44 // 1. Create or find Borrower
+→ 45 let borrower = await prisma.borrower.findUnique({
+       where: {
+         email: undefined,
+     ?   id?: String,
+     ?   AND?: BorrowerWhereInput | BorrowerWhereInput[],
+     ?   OR?: BorrowerWhereInput[],
+     ?   NOT?: BorrowerWhereInput | BorrowerWhereInput[],
+     ?   firstName?: StringFilter | String,
+     ?   lastName?: StringFilter | String,
+     ?   phone?: StringFilter | String,
+     ?   createdAt?: DateTimeFilter | DateTime,
+     ?   updatedAt?: DateTimeFilter | DateTime,
+     ?   applications?: ApplicationListRelationFilter
+       }
+     })
+
+Argument `where` of type BorrowerWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.
+    at throwValidationException (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\core\errorRendering\throwValidationException.ts:46:9)
+    at zr.handleRequestError (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\RequestHandler.ts:211:7)
+    at zr.handleAndLogRequestError (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\RequestHandler.ts:183:12)
+    at zr.request (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\RequestHandler.ts:152:12)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async a (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:808:24)
+
+[2026-03-11T16:46:40.353Z] Submission failed
+PrismaClientValidationError: 
+Invalid `prisma.borrower.findUnique()` invocation in
+D:\Creek lend\backend\src\controllers\application.ts:45:46
+
+  42 } = req.body;
+  43 
+  44 // 1. Create or find Borrower
+→ 45 let borrower = await prisma.borrower.findUnique({
+       where: {
+         email: undefined,
+     ?   id?: String,
+     ?   AND?: BorrowerWhereInput | BorrowerWhereInput[],
+     ?   OR?: BorrowerWhereInput[],
+     ?   NOT?: BorrowerWhereInput | BorrowerWhereInput[],
+     ?   firstName?: StringFilter | String,
+     ?   lastName?: StringFilter | String,
+     ?   phone?: StringFilter | String,
+     ?   createdAt?: DateTimeFilter | DateTime,
+     ?   updatedAt?: DateTimeFilter | DateTime,
+     ?   applications?: ApplicationListRelationFilter
+       }
+     })
+
+Argument `where` of type BorrowerWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.
+    at throwValidationException (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\core\errorRendering\throwValidationException.ts:46:9)
+    at zr.handleRequestError (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\RequestHandler.ts:211:7)
+    at zr.handleAndLogRequestError (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\RequestHandler.ts:183:12)
+    at zr.request (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\RequestHandler.ts:152:12)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async a (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:808:24)
+
+[2026-03-11T16:47:50.417Z] Submission failed
+PrismaClientValidationError: 
+Invalid `prisma.borrower.findUnique()` invocation in
+D:\Creek lend\backend\src\controllers\application.ts:45:46
+
+  42 } = req.body;
+  43 
+  44 // 1. Create or find Borrower
+→ 45 let borrower = await prisma.borrower.findUnique({
+       where: {
+         email: undefined,
+     ?   id?: String,
+     ?   AND?: BorrowerWhereInput | BorrowerWhereInput[],
+     ?   OR?: BorrowerWhereInput[],
+     ?   NOT?: BorrowerWhereInput | BorrowerWhereInput[],
+     ?   firstName?: StringFilter | String,
+     ?   lastName?: StringFilter | String,
+     ?   phone?: StringFilter | String,
+     ?   createdAt?: DateTimeFilter | DateTime,
+     ?   updatedAt?: DateTimeFilter | DateTime,
+     ?   applications?: ApplicationListRelationFilter
+       }
+     })
+
+Argument `where` of type BorrowerWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.
+    at throwValidationException (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\core\errorRendering\throwValidationException.ts:46:9)
+    at zr.handleRequestError (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\RequestHandler.ts:211:7)
+    at zr.handleAndLogRequestError (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\RequestHandler.ts:183:12)
+    at zr.request (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\RequestHandler.ts:152:12)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async a (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:808:24)
+
+[2026-03-11T17:07:12.877Z] Submission failed
+PrismaClientValidationError: 
+Invalid `prisma.borrower.findUnique()` invocation in
+D:\Creek lend\backend\src\controllers\application.ts:53:46
+
+  50 
+  51 
+  52 // 1. Create or find Borrower
+→ 53 let borrower = await prisma.borrower.findUnique({
+       where: {
+         email: undefined,
+     ?   id?: String,
+     ?   AND?: BorrowerWhereInput | BorrowerWhereInput[],
+     ?   OR?: BorrowerWhereInput[],
+     ?   NOT?: BorrowerWhereInput | BorrowerWhereInput[],
+     ?   firstName?: StringFilter | String,
+     ?   lastName?: StringFilter | String,
+     ?   phone?: StringFilter | String,
+     ?   createdAt?: DateTimeFilter | DateTime,
+     ?   updatedAt?: DateTimeFilter | DateTime,
+     ?   applications?: ApplicationListRelationFilter
+       }
+     })
+
+Argument `where` of type BorrowerWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.
+    at throwValidationException (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\core\errorRendering\throwValidationException.ts:46:9)
+    at zr.handleRequestError (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\RequestHandler.ts:211:7)
+    at zr.handleAndLogRequestError (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\RequestHandler.ts:183:12)
+    at zr.request (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\RequestHandler.ts:152:12)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async a (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:808:24)
+
+[2026-03-11T17:37:23.483Z] Submission failed
+PrismaClientValidationError: 
+Invalid `prisma.borrower.findUnique()` invocation in
+D:\Creek lend\backend\src\controllers\application.ts:53:46
+
+  50 
+  51 
+  52 // 1. Create or find Borrower
+→ 53 let borrower = await prisma.borrower.findUnique({
+       where: {
+         email: undefined,
+     ?   id?: String,
+     ?   AND?: BorrowerWhereInput | BorrowerWhereInput[],
+     ?   OR?: BorrowerWhereInput[],
+     ?   NOT?: BorrowerWhereInput | BorrowerWhereInput[],
+     ?   firstName?: StringFilter | String,
+     ?   lastName?: StringFilter | String,
+     ?   phone?: StringFilter | String,
+     ?   createdAt?: DateTimeFilter | DateTime,
+     ?   updatedAt?: DateTimeFilter | DateTime,
+     ?   applications?: ApplicationListRelationFilter
+       }
+     })
+
+Argument `where` of type BorrowerWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.
+    at throwValidationException (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\core\errorRendering\throwValidationException.ts:46:9)
+    at zr.handleRequestError (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\RequestHandler.ts:211:7)
+    at zr.handleAndLogRequestError (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\RequestHandler.ts:183:12)
+    at zr.request (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\RequestHandler.ts:152:12)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async a (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:808:24)
+
+[2026-03-11T17:37:41.729Z] Submission failed
+PrismaClientValidationError: 
+Invalid `prisma.borrower.findUnique()` invocation in
+D:\Creek lend\backend\src\controllers\application.ts:53:46
+
+  50 
+  51 
+  52 // 1. Create or find Borrower
+→ 53 let borrower = await prisma.borrower.findUnique({
+       where: {
+         email: undefined,
+     ?   id?: String,
+     ?   AND?: BorrowerWhereInput | BorrowerWhereInput[],
+     ?   OR?: BorrowerWhereInput[],
+     ?   NOT?: BorrowerWhereInput | BorrowerWhereInput[],
+     ?   firstName?: StringFilter | String,
+     ?   lastName?: StringFilter | String,
+     ?   phone?: StringFilter | String,
+     ?   createdAt?: DateTimeFilter | DateTime,
+     ?   updatedAt?: DateTimeFilter | DateTime,
+     ?   applications?: ApplicationListRelationFilter
+       }
+     })
+
+Argument `where` of type BorrowerWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.
+    at throwValidationException (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\core\errorRendering\throwValidationException.ts:46:9)
+    at zr.handleRequestError (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\RequestHandler.ts:211:7)
+    at zr.handleAndLogRequestError (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\RequestHandler.ts:183:12)
+    at zr.request (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\RequestHandler.ts:152:12)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async a (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:808:24)
+
+[2026-03-11T17:41:22.569Z] Submission failed
+PrismaClientValidationError: 
+Invalid `prisma.borrower.findUnique()` invocation in
+D:\Creek lend\backend\src\controllers\application.ts:53:46
+
+  50 
+  51 
+  52 // 1. Create or find Borrower
+→ 53 let borrower = await prisma.borrower.findUnique({
+       where: {
+         email: undefined,
+     ?   id?: String,
+     ?   AND?: BorrowerWhereInput | BorrowerWhereInput[],
+     ?   OR?: BorrowerWhereInput[],
+     ?   NOT?: BorrowerWhereInput | BorrowerWhereInput[],
+     ?   firstName?: StringFilter | String,
+     ?   lastName?: StringFilter | String,
+     ?   phone?: StringFilter | String,
+     ?   createdAt?: DateTimeFilter | DateTime,
+     ?   updatedAt?: DateTimeFilter | DateTime,
+     ?   applications?: ApplicationListRelationFilter
+       }
+     })
+
+Argument `where` of type BorrowerWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.
+    at throwValidationException (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\core\errorRendering\throwValidationException.ts:46:9)
+    at zr.handleRequestError (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\RequestHandler.ts:211:7)
+    at zr.handleAndLogRequestError (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\RequestHandler.ts:183:12)
+    at zr.request (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\RequestHandler.ts:152:12)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async a (D:\Creek lend\backend\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:808:24)

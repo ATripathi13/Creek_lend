@@ -11,8 +11,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.bankLookup = exports.submitApplication = void 0;
 const client_1 = require("@prisma/client");
+const pg_1 = require("pg");
+const adapter_pg_1 = require("@prisma/adapter-pg");
 const encryption_1 = require("../utils/encryption");
-const prisma = new client_1.PrismaClient();
+const pool = new pg_1.Pool({ connectionString: process.env.DATABASE_URL });
+const adapter = new adapter_pg_1.PrismaPg(pool);
+const prisma = new client_1.PrismaClient({ adapter });
 const submitApplication = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { firstName, lastName, email, phone, loanAmount, ssn, dob, dlState, dlNumber, employerName, monthlyIncome, incomeFrequency, routingNumber, accountNumber, bankName, tcpaConsent, utmSource, utmMedium, utmCampaign, } = req.body;
@@ -44,6 +48,7 @@ const submitApplication = (req, res) => __awaiter(void 0, void 0, void 0, functi
                 encryptedDlNumber,
                 encryptedAccountNum,
                 dlState,
+                dob,
                 employerName,
                 monthlyIncome,
                 incomeFrequency,

@@ -1,17 +1,22 @@
 import { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
+import { Pool } from 'pg';
+import { PrismaPg } from '@prisma/adapter-pg';
 import { encrypt } from '../utils/encryption';
+import fs from 'fs';
+import path from 'path';
 
-const prisma = new PrismaClient({
-    accelerateUrl: process.env.DATABASE_URL,
-});
-// const prisma = new PrismaClient({
-//     datasources: {
-//         db: {
-//             url: process.env.DATABASE_URL, // ✅ Correct structure
-//         },
-//     },
-// })
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+const adapter = new PrismaPg(pool as any);
+const prisma = new PrismaClient({ adapter: adapter as any });
+
+console.log('Controller initialized.');
+
+const logError = (msg: string, err: any) => {
+    const timestamp = new Date().toISOString();
+    const logMsg = `\n[${timestamp}] ${msg}\n${err?.stack || err}\n`;
+    fs.appendFileSync(path.join(process.cwd(), 'debug.log'), logMsg);
+};
 
 export const submitApplication = async (req: Request, res: Response) => {
     try {
@@ -36,6 +41,7 @@ export const submitApplication = async (req: Request, res: Response) => {
             utmMedium,
             utmCampaign,
         } = req.body;
+
 
         // 1. Create or find Borrower
         let borrower = await prisma.borrower.findUnique({
@@ -62,7 +68,7 @@ export const submitApplication = async (req: Request, res: Response) => {
         const application = await prisma.application.create({
             data: {
                 borrowerId: borrower.id,
-                loanAmount,
+                loanAmount: Number(loanAmount),
                 status: 'PENDING',
                 encryptedSsn,
                 encryptedDlNumber,
@@ -70,7 +76,7 @@ export const submitApplication = async (req: Request, res: Response) => {
                 dlState,
                 dob,
                 employerName,
-                monthlyIncome,
+                monthlyIncome: Number(monthlyIncome),
                 incomeFrequency,
                 routingNumber,
                 bankName,
@@ -87,8 +93,8 @@ export const submitApplication = async (req: Request, res: Response) => {
                     create: {
                         type: 'TCPA',
                         agreed: tcpaConsent,
-                        ipAddress: req.ip || '0.0.0.0',
-                        userAgent: req.get('user-agent') || 'unknown',
+                        ipAddress: (req as any).ip || '0.0.0.0',
+                        userAgent: (req as any).get?.('user-agent') || 'unknown',
                     },
                 },
             },
@@ -97,8 +103,6 @@ export const submitApplication = async (req: Request, res: Response) => {
             },
         });
 
-        // In production, we would trigger Meta CAPI or Email webhooks here
-
         res.status(201).json({
             success: true,
             applicationId: application.id,
@@ -106,9 +110,10 @@ export const submitApplication = async (req: Request, res: Response) => {
         });
     } catch (error: any) {
         console.error('Error submitting application:', error);
+        logError('Submission failed', error);
         res.status(500).json({
             success: false,
-            error: 'Inernal Server Error',
+            error: 'Internal Server Error',
             message: error.message,
         });
     }
