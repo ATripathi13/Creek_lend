@@ -1,4 +1,4 @@
-import { Info, Check, ShieldInfo } from "lucide-react";
+import { Info, Check, ShieldCheck } from "lucide-react";
 
 export default function RatesAndFees() {
     return (
@@ -52,7 +52,7 @@ export default function RatesAndFees() {
 
             <div className="max-w-4xl mx-auto bg-muted/50 p-12 rounded-[3rem] border">
                 <h3 className="font-bold text-center mb-8 text-2xl flex items-center justify-center gap-3">
-                    <ShieldInfo size={28} className="text-primary-600" />
+                    <ShieldCheck size={28} className="text-primary-600" />
                     Direct Lender Commitment
                 </h3>
                 <p className="text-sm text-center leading-relaxed text-muted-foreground">

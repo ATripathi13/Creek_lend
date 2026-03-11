@@ -2,7 +2,16 @@ import { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
 import { encrypt } from '../utils/encryption';
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({
+    accelerateUrl: process.env.DATABASE_URL,
+});
+// const prisma = new PrismaClient({
+//     datasources: {
+//         db: {
+//             url: process.env.DATABASE_URL, // ✅ Correct structure
+//         },
+//     },
+// })
 
 export const submitApplication = async (req: Request, res: Response) => {
     try {
