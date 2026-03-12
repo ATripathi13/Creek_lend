@@ -1,5 +1,3 @@
-<![CDATA[<div align="center">
-
 # 🏦 Creek Lend
 
 **A production-grade, full-stack direct lending platform.**
@@ -11,7 +9,6 @@ Built with Next.js 16 · Node.js + Express · PostgreSQL · Prisma 7 · AES-256 
 [![Next.js](https://img.shields.io/badge/Next.js-16.1.6-black)](https://nextjs.org/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-336791)](https://www.postgresql.org/)
 
-</div>
 
 ---
 
@@ -552,3 +549,4 @@ ISC © Creek Lend
 
 *Built with precision for the modern lending industry.*
 ]]>
+
