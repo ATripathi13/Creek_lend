@@ -4,6 +4,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { motion, AnimatePresence } from "framer-motion";
+import { pushDataLayerEvent } from "../../src/components/GoogleTagManager";
 import {
     User,
     IdCard,
@@ -98,11 +99,20 @@ export default function ApplyPage() {
     }, [watch]);
 
     // Handlers
+    const stepNames = ['basics', 'identification', 'employment', 'banking', 'consent'];
+
     const nextStep = async () => {
         const isValid = await trigger();
         if (isValid && currentStep < totalSteps - 1) {
-            setCurrentStep(prev => prev + 1);
+            const nextIndex = currentStep + 1;
+            setCurrentStep(nextIndex);
             window.scrollTo(0, 0);
+            // GTM: track funnel step progression
+            pushDataLayerEvent('funnel_step_complete', {
+                step_index: currentStep,
+                step_name: stepNames[currentStep],
+                next_step: stepNames[nextIndex],
+            });
         }
     };
 
@@ -143,8 +153,19 @@ export default function ApplyPage() {
             const result = await response.json();
             console.log("Submission successful:", result);
 
+            // GTM: fire conversion event — GA4 tags + Meta Pixel Lead tag 
+            // will both be triggered by this dataLayer push.
+            // The eventId (applicationId) allows Meta to deduplicate this
+            // browser-pixel event against our server-side CAPI event.
+            pushDataLayerEvent('application_submitted', {
+                event_id: result.applicationId, // Used by Meta for browser-CAPI deduplication
+                currency: 'USD',
+                value: methods.getValues('loanAmount') ?? 0,
+            });
+
             setSubmitted(true);
             localStorage.removeItem("creek_lend_draft");
+
         } catch (error) {
             console.error("Error submitting application:", error);
             alert("There was an error submitting your application. Please try again.");

@@ -3,6 +3,7 @@ import { PrismaClient } from '@prisma/client';
 import { Pool } from 'pg';
 import { PrismaPg } from '@prisma/adapter-pg';
 import { encrypt } from '../utils/encryption';
+import { sendCapiEvent } from '../utils/capi';
 import fs from 'fs';
 import path from 'path';
 
@@ -102,6 +103,25 @@ export const submitApplication = async (req: Request, res: Response) => {
                 utmTracking: true,
             },
         });
+
+        // 4. Fire Meta CAPI Lead event (fire-and-forget — does NOT block the response)
+        // The eventId matches the applicationId so Meta can deduplicate
+        // against any browser-pixel Lead event fired at the same time.
+        sendCapiEvent({
+            eventName: 'Lead',
+            eventId: application.id,
+            sourceUrl: req.headers['referer'] || 'https://creeklend.com/apply',
+            email: email,
+            phone: phone,
+            firstName: firstName,
+            lastName: lastName,
+            clientIp: (req as any).ip || undefined,
+            clientUserAgent: (req as any).get?.('user-agent') || undefined,
+            customData: {
+                currency: 'USD',
+                value: Number(loanAmount),
+            },
+        }).catch((err: any) => console.error('[CAPI] Failed to send event:', err));
 
         res.status(201).json({
             success: true,

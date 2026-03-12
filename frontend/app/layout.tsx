@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import UTMTracker from "../src/components/UTMTracker";
+import { GTMScript, GTMNoScript } from "../src/components/GoogleTagManager";
 import { Suspense } from "react";
 
 const inter = Inter({
@@ -56,6 +57,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        {/* Google Tag Manager — Server-Side Container */}
+        <GTMScript />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -64,6 +67,8 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${outfit.variable} font-sans antialiased`}
       >
+        {/* GTM noscript fallback */}
+        <GTMNoScript />
         <Suspense fallback={null}>
           <UTMTracker />
         </Suspense>
